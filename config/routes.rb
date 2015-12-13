@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  root 'static_pages#board'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
@@ -53,4 +53,11 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+  scope '/graphql' do
+    post '/', to: 'graphql#create'
+  end
+
+  scope '/static_pages' do
+    get '/board', to: 'static_pages#board'
+  end
 end
