@@ -25,5 +25,11 @@ module GraphqlDemo
 
     # Load all graphql types
     config.autoload_paths << Rails.root.join('app', 'graph', 'types')
+
+    config.webpack = {
+      :use_manifest => false,
+      :asset_manifest => {},
+      :common_manifest => {},
+    }
   end
 end
