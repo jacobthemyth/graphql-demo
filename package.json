@@ -19,5 +19,9 @@
     "react-transform-hmr": "^1.0.1",
     "redbox-react": "^1.2.0",
     "webpack": "^1.12.9"
+  },
+
+  "scripts": {
+    "postinstall": "./bin/webpack-compile"
   }
 }
