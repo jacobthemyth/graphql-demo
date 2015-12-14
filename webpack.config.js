@@ -1,4 +1,5 @@
 var path = require('path');
+var webpack = require('webpack');
 
 module.exports = {
   context: path.resolve(__dirname, 'frontend'),
@@ -36,6 +37,13 @@ module.exports = {
       }
     ]
   },
+
+  plugins: [
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'common',
+      filename: 'common.bundle.js'
+    })
+  ],
 
   resolve: {
     extensions: ['', '.js', '.jsx'],
