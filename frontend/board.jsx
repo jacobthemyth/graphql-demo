@@ -11,6 +11,6 @@ $(document).ready(function() {
         Component={BoardRelayContainer}
         route={BoardRelayRoute}
     />,
-    document.getElementById('board-application')
+    document.querySelector('[data-component-container=board]')
   );
 });
