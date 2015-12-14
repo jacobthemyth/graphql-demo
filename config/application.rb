@@ -25,7 +25,5 @@ module GraphqlDemo
 
     # Load all graphql types
     config.autoload_paths << Rails.root.join('app', 'graph', 'types')
-
-    config.browserify_rails.commandline_options = '-t [ babelify --plugins "./relay/utils/babelRelayPlugin" ] --extension=".react.jsx"'
   end
 end

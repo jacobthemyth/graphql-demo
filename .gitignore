@@ -36,3 +36,6 @@ bower.json
 .powenv
 
 /node_modules
+
+# Webpack
+/app/assets/javascripts/*.bundle.js
