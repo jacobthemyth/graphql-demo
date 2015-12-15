@@ -1,15 +1,21 @@
 #! /usr/bin/env node
-var exec = require('child_process').exec;
+var spawn = require('child_process').spawn;
 var fs = require('fs');
 var path = require('path');
 
-exec("webpack --config config/webpack/production.config.js --json", function(err, stdout, stderr) {
-  var outputPath = path.resolve(__dirname, '..', 'public', 'assets', 'webpack-asset-manifest.json');
-  fs.writeFile(outputPath, stdout, function(err) {
-    if(err) {
-      console.log(err);
-    } else {
-      console.log("Successfully compiled webpack assets");
-    }
+var outputPath = path.resolve(__dirname, '..', 'public', 'assets', 'webpack-asset-manifest.json');
+var tmpPath = path.resolve(__dirname, '..', 'tmp', 'webpack.log.json');
+
+var webpack = spawn('webpack', ['--config', 'config/webpack/production.config.js', '--json']);
+var logStream = fs.createWriteStream(tmpPath);
+
+webpack.stdout.pipe(logStream);
+
+webpack.on('close', function(code) {
+  var assets = JSON.stringify(require(tmpPath).assetsByChunkName, null, 4);
+  fs.writeFile(outputPath, assets, function(err) {
+    if(err) return console.log(err);
+
+    console.log("Successfully generated assets manifest");
   });
 });
