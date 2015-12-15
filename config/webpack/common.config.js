@@ -7,7 +7,7 @@ module.exports = {
   context: rootDir,
 
   entry: {
-    board: './frontend/board.jsx'
+    game: './frontend/game.jsx'
   },
 
   externals: {
@@ -29,10 +29,12 @@ module.exports = {
 
   output: {
     filename: '[name].bundle.js',
-    path: path.resolve(__dirname, 'app', 'assets', 'javascripts'),
+    path: path.resolve(rootDir, 'app', 'assets', 'javascripts'),
     // if the webpack code-splitting feature is enabled, this is the path it'll use to download bundles
     publicPath: '/assets'
   },
+
+  plugins: [],
 
   resolve: {
     extensions: ['', '.js', '.jsx'],

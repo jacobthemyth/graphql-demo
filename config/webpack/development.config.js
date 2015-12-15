@@ -8,16 +8,18 @@ var config = _.merge({}, common, {
   devtool: '#eval-source-map',
   displayErrorDetails: true,
   outputPathinfo: true,
-  output: {
-    devtoolModuleFilenameTemplate: '[resourcePath]',
-    devtoolFallbackModuleFilenameTemplate: '[resourcePath]?[hash]'
-  },
-  plugins: [
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'common',
-      filename: 'common.bundle.js'
-    })
-  ]
 });
+
+_.merge(config.output, {
+  devtoolModuleFilenameTemplate: '[resourcePath]',
+  devtoolFallbackModuleFilenameTemplate: '[resourcePath]?[hash]'
+});
+
+config.plugins.push(
+  new webpack.optimize.CommonsChunkPlugin({
+    name: 'common',
+    filename: 'common.bundle.js'
+  })
+);
 
 module.exports = config;

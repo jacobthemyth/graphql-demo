@@ -1,4 +1,4 @@
 class StaticPagesController < ApplicationController
-  def board
+  def game
   end
 end

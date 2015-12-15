@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'static_pages#board'
+  root 'static_pages#game'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
@@ -58,6 +58,6 @@ Rails.application.routes.draw do
   end
 
   scope '/static_pages' do
-    get '/board', to: 'static_pages#board'
+    get '/game', to: 'static_pages#game'
   end
 end
