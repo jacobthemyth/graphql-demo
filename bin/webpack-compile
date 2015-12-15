@@ -6,7 +6,7 @@ var path = require('path');
 var outputPath = path.resolve(__dirname, '..', 'public', 'assets', 'webpack-asset-manifest.json');
 var tmpPath = path.resolve(__dirname, '..', 'tmp', 'webpack.log.json');
 
-var webpack = spawn('./node_modules/.bin/webpack', ['--config', 'config/webpack/production.config.js', '--json']);
+var webpack = spawn('webpack', ['--config', 'config/webpack/production.config.js', '--json']);
 var logStream = fs.createWriteStream(tmpPath);
 
 webpack.stdout.pipe(logStream);
