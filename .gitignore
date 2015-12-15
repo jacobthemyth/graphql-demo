@@ -39,3 +39,4 @@ bower.json
 
 # Webpack
 /app/assets/javascripts/*.bundle.js
+.env
